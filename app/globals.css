@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+
+    --primary: 0 70% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 17%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 53%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 17%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 0 70% 42%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 17%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 17%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 17%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 70% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 98%;
+    --secondary-foreground: 0 0% 17%;
+
+    --muted: 0 0% 27%;
+    --muted-foreground: 0 0% 63%;
+
+    --accent: 0 0% 27%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 27%;
+    --input: 0 0% 27%;
+    --ring: 0 70% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.7s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

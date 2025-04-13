@@ -1,13 +1,13 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
-import { CardContent } from "@/components/ui/card"
-import { Award, Users, Clock, Shield } from "lucide-react"
-import { AnimatedButton } from "@/components/ui/animated-button"
-import { AnimatedCard } from "@/components/ui/animated-card"
-import FadeIn from "@/components/animations/fade-in"
-import StaggeredChildren from "@/components/animations/staggered-children"
-import AnimatedText from "@/components/animations/animated-text"
+import Image from "next/image";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { CardContent } from "@/components/ui/card";
+import { Award, Users, Clock, Shield, CheckCircle } from "lucide-react";
+import { AnimatedButton } from "@/components/ui/animated-button";
+import { AnimatedCard } from "@/components/ui/animated-card";
+import FadeIn from "@/components/animations/fade-in";
+import StaggeredChildren from "@/components/animations/staggered-children";
+import AnimatedText from "@/components/animations/animated-text";
 
 export default function AboutPage() {
   return (
@@ -18,15 +18,19 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
               <div className="space-y-6">
-                <Badge className="bg-firered/10 text-firered hover:bg-firered/20">About Us</Badge>
+                <Badge className="bg-firered/10 text-firered hover:bg-firered/20">
+                  About Us
+                </Badge>
                 <AnimatedText
                   text="Protecting Lives & Property Since 2003"
                   className="text-4xl md:text-5xl font-bold"
                 />
                 <p className="text-lg text-grayaccent">
-                  FireGuard Solutions is a leading provider of comprehensive fire safety services for businesses and
-                  facilities across the country. With decades of experience, we've built our reputation on reliability,
-                  expertise, and exceptional customer service.
+                  FireGuard Solutions is a leading provider of comprehensive
+                  fire safety services for businesses and facilities across the
+                  country. With decades of experience, we've built our
+                  reputation on reliability, expertise, and exceptional customer
+                  service.
                 </p>
               </div>
             </FadeIn>
@@ -49,39 +53,66 @@ export default function AboutPage() {
         <div className="container">
           <FadeIn>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">Our Mission</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Mission & Values</h2>
+              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">
+                Our Mission
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Our Mission & Values
+              </h2>
               <p className="text-grayaccent text-lg">
-                At FireGuard Solutions, we're committed to providing the highest quality fire safety services to protect
-                what matters most - lives and property.
+                At FireGuard Solutions, we're committed to providing the highest
+                quality fire safety services to protect what matters most -
+                lives and property.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">
+                Our Vision
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Our Vision
+              </h2>
+              <p className="text-grayaccent text-lg">
+                To be the most trusted name in fire safety, recognized for our
+                expertise, reliability, and commitment to excellence in every
+                service we provide.
               </p>
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* <div className="container flex flex-col w-full justify-center items-center">
             <FadeIn direction="right">
-              <div className="space-y-6">
-                <div className="space-y-4">
+              <div className="space-y-6 max-w-3xl  mx-auto mb-16">
+                <div className="space-y-4 flex justify-center items-center flex-col ]">
                   <h3 className="text-2xl font-bold">Our Mission</h3>
-                  <p className="text-grayaccent">
+                  <p className="text-grayaccent px-5 text-center">
                     To provide exceptional fire safety solutions that protect lives and property while delivering
                     outstanding customer service and maintaining the highest standards of quality and professionalism.
                   </p>
                 </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold">Our Vision</h3>
-                  <p className="text-grayaccent">
-                    To be the most trusted name in fire safety, recognized for our expertise, reliability, and
+                <div className="space-y-4 flex justify-center items-center flex-col ]">
+                  <h3 className="text-3xl md:text-4xl font-bold mb-3">Our Vision</h3>
+                  <p className="text-grayaccent px-5 text-center text-lg">
+                  To be the most trusted name in fire safety, recognized for our expertise, reliability, and
                     commitment to excellence in every service we provide.
                   </p>
                 </div>
+
+               
               </div>
             </FadeIn>
-
-            <FadeIn direction="left" delay={0.2}>
-              <div className="grid grid-cols-2 gap-6">
-                <StaggeredChildren>
+</div> */}
+          <div className="container  w-full">
+            <FadeIn
+              direction="left"
+              delay={0.2}
+              className=""
+            >
+              <div className=" ">
+                <StaggeredChildren className="justify-center"
+  childVariants={"customChildVariants"}>
                   {[
                     {
                       icon: <Shield className="h-8 w-8 text-firered" />,
@@ -98,24 +129,30 @@ export default function AboutPage() {
                     {
                       icon: <Users className="h-8 w-8 text-firered" />,
                       title: "Integrity",
-                      description: "We operate with honesty and transparency in all our business dealings.",
+                      description:
+                        "We operate with honesty and transparency in all our business dealings.",
                     },
                     {
                       icon: <Clock className="h-8 w-8 text-firered" />,
                       title: "Reliability",
-                      description: "We're there when you need us, providing dependable service you can count on.",
+                      description:
+                        "We're there when you need us, providing dependable service you can count on.",
                     },
                   ].map((value, index) => (
                     <AnimatedCard
                       key={index}
-                      className="border-none shadow-md hover:shadow-lg transition-all duration-300"
+                      className="border-none w-[300px]  shadow-md hover:shadow-lg transition-all duration-300"
                     >
-                      <CardContent className="p-6 flex flex-col items-center text-center">
+                      <CardContent className="p-6  flex flex-col items-center text-center">
                         <div className="h-16 w-16 rounded-full bg-firered/10 flex items-center justify-center mb-4 group-hover:bg-firered/20 transition-colors duration-300">
                           {value.icon}
                         </div>
-                        <h4 className="text-xl font-semibold mb-2">{value.title}</h4>
-                        <p className="text-grayaccent text-sm">{value.description}</p>
+                        <h4 className="text-xl font-semibold mb-2">
+                          {value.title}
+                        </h4>
+                        <p className="text-grayaccent text-sm">
+                          {value.description}
+                        </p>
                       </CardContent>
                     </AnimatedCard>
                   ))}
@@ -126,173 +163,198 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Company Owner Section */}
       <section className="py-16 md:py-24 bg-muted">
         <div className="container">
           <FadeIn>
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">Our Team</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Leadership Team</h2>
+              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">
+                Our Leadership
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Meet Our Founder
+              </h2>
               <p className="text-grayaccent text-lg">
-                Our experienced team of fire safety professionals is dedicated to providing the highest level of service
-                and expertise.
+                The vision and expertise behind FireGuard Solutions
               </p>
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <StaggeredChildren>
+          <div className="max-w-3xl mx-auto">
+            <FadeIn direction="up">
+              <AnimatedCard className="overflow-hidden">
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="relative h-64 md:h-full overflow-hidden">
+                    <Image
+                      src="/placeholder.svg?height=400&width=400"
+                      alt="Robert Johnson - Founder & CEO"
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                  <div className="md:col-span-2 p-6">
+                    <h3 className="text-2xl font-bold">Robert Johnson</h3>
+                    <p className="text-firered font-medium mb-4">
+                      Founder & CEO
+                    </p>
+                    <p className="text-grayaccent mb-4">
+                      With over 25 years of experience in fire safety, Robert
+                      founded FireGuard Solutions with a vision to provide
+                      exceptional service and protection. His extensive
+                      knowledge and dedication to safety standards have
+                      established the company as a leader in the industry.
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Award className="text-firered h-5 w-5" />
+                        <span className="font-medium">
+                          Certified Fire Protection Specialist (CFPS)
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Award className="text-firered h-5 w-5" />
+                        <span className="font-medium">
+                          Licensed Fire Safety Director
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="text-firered h-5 w-5" />
+                        <span className="font-medium">
+                          25+ Years Industry Experience
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedCard>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Completed Contracts Showcase */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <FadeIn>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">
+                Our Work
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Completed Contracts
+              </h2>
+              <p className="text-grayaccent text-lg">
+                A showcase of our successful fire safety projects and
+                installations
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="flex justify-evenly items-center flex-wrap w-full">
+            <StaggeredChildren childVariants={"customChildVariants"} className="w-full justify-center">
               {[
                 {
-                  name: "Robert Johnson",
-                  position: "Founder & CEO",
-                  image: "/placeholder.svg?height=400&width=400",
-                  bio: "With over 25 years of experience in fire safety, Robert founded FireGuard Solutions with a vision to provide exceptional service and protection.",
+                  title: "Westside Commercial Complex",
+                  location: "Downtown Metro Area",
+                  image: "/placeholder.svg?height=400&width=600",
+                  services: [
+                    "Complete fire sprinkler system installation across 12 floors",
+                    "Advanced fire alarm system with central monitoring",
+                    "Emergency evacuation system implementation",
+                    "Staff safety training for 200+ employees",
+                    "Annual maintenance contract",
+                  ],
                 },
                 {
-                  name: "Sarah Williams",
-                  position: "Operations Director",
-                  image: "/placeholder.svg?height=400&width=400",
-                  bio: "Sarah oversees all operations, ensuring that every project is completed to the highest standards of quality and safety.",
+                  title: "Riverfront Hotel & Resort",
+                  location: "Coastal Tourist District",
+                  image: "/placeholder.svg?height=400&width=600",
+                  services: [
+                    "Fire safety system upgrade for 150+ guest rooms",
+                    "Kitchen fire suppression systems for 3 restaurants",
+                    "Smoke detection system with smart alerts",
+                    "Emergency lighting installation throughout property",
+                    "Custom evacuation plan development",
+                  ],
                 },
                 {
-                  name: "Michael Chen",
-                  position: "Technical Director",
-                  image: "/placeholder.svg?height=400&width=400",
-                  bio: "Michael leads our technical team, bringing innovative solutions and extensive knowledge of fire safety systems.",
+                  title: "Northside Manufacturing Plant",
+                  location: "Industrial Zone",
+                  image: "/placeholder.svg?height=400&width=600",
+                  services: [
+                    "Industrial-grade fire suppression system installation",
+                    "Hazardous materials fire protection solutions",
+                    "24/7 monitoring system implementation",
+                    "Emergency response team training",
+                    "Regulatory compliance certification",
+                  ],
                 },
                 {
-                  name: "Jennifer Martinez",
-                  position: "Customer Relations Manager",
-                  image: "/placeholder.svg?height=400&width=400",
-                  bio: "Jennifer ensures that our clients receive exceptional service and support throughout their journey with us.",
+                  title: "Eastwood Medical Center",
+                  location: "Healthcare District",
+                  image: "/placeholder.svg?height=400&width=600",
+                  services: [
+                    "Hospital-grade fire protection system installation",
+                    "Specialized systems for operating rooms and labs",
+                    "Patient evacuation planning and equipment",
+                    "Staff emergency response training",
+                    "Quarterly inspection and maintenance program",
+                  ],
                 },
-              ].map((member, index) => (
-                <AnimatedCard key={index} className="overflow-hidden group">
-                  <div className="relative h-64 overflow-hidden">
+                {
+                  title: "Central School District",
+                  location: "Multiple Campus Locations",
+                  image: "/placeholder.svg?height=400&width=600",
+                  services: [
+                    "Fire alarm system upgrades for 5 school buildings",
+                    "Sprinkler system installation in gymnasiums and cafeterias",
+                    "Emergency evacuation system with PA integration",
+                    "Fire safety education program for students and staff",
+                    "Monthly inspection and maintenance services",
+                  ],
+                },
+                {
+                  title: "Southside Residential Towers",
+                  location: "Urban Residential Area",
+                  image: "/placeholder.svg?height=400&width=600",
+                  services: [
+                    "High-rise residential fire protection system installation",
+                    "Smart smoke and heat detection in 300+ units",
+                    "Lobby and common area sprinkler systems",
+                    "Resident fire safety education program",
+                    "24/7 emergency monitoring services",
+                  ],
+                },
+              ].map((contract, index) => (
+                <AnimatedCard key={index} className="overflow-hidden h-[520px] w-[450px]">
+                  <div className="relative h-48 overflow-hidden">
                     <Image
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
+                      src={contract.image || "/placeholder.svg"}
+                      alt={contract.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold">{member.name}</h3>
-                    <p className="text-firered font-medium mb-3">{member.position}</p>
-                    <p className="text-grayaccent text-sm">{member.bio}</p>
+                    <h3 className="text-xl font-bold mb-1">{contract.title}</h3>
+                    <p className="text-firered font-medium text-sm mb-4">
+                      {contract.location}
+                    </p>
+                    <h4 className="font-semibold text-base mb-2">
+                      Services Provided:
+                    </h4>
+                    <ul className="space-y-2">
+                      {contract.services.map((service, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <CheckCircle className="text-firered h-5 w-5 mt-0.5 flex-shrink-0" />
+                          <span className="text-grayaccent text-sm">
+                            {service}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </AnimatedCard>
-              ))}
-            </StaggeredChildren>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Timeline */}
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <FadeIn>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">Our Journey</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Experience & Certifications</h2>
-              <p className="text-grayaccent text-lg">
-                Our journey of growth and excellence in the fire safety industry spans over two decades.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="relative border-l-2 border-firered ml-4 md:ml-0 md:mx-auto md:max-w-3xl">
-            <StaggeredChildren staggerDelay={0.15}>
-              {[
-                {
-                  year: "2003",
-                  title: "Company Founded",
-                  description:
-                    "FireGuard Solutions was established with a mission to provide high-quality fire safety services.",
-                },
-                {
-                  year: "2008",
-                  title: "Expansion of Services",
-                  description:
-                    "Expanded our service offerings to include comprehensive fire alarm systems and emergency lighting.",
-                },
-                {
-                  year: "2012",
-                  title: "National Certification",
-                  description: "Received national certification for fire safety installation and maintenance services.",
-                },
-                {
-                  year: "2015",
-                  title: "Regional Expansion",
-                  description:
-                    "Expanded operations to cover three additional states, serving more businesses and facilities.",
-                },
-                {
-                  year: "2018",
-                  title: "Industry Recognition",
-                  description:
-                    "Received industry recognition for excellence in fire safety services and customer satisfaction.",
-                },
-                {
-                  year: "2023",
-                  title: "20 Years of Excellence",
-                  description:
-                    "Celebrated 20 years of providing exceptional fire safety services to our valued clients.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="mb-12 ml-8 md:ml-0 md:grid md:grid-cols-5 md:gap-4">
-                  <div className="md:col-span-1 flex md:justify-end">
-                    <div className="absolute -left-4 md:static">
-                      <div className="h-8 w-8 rounded-full bg-firered flex items-center justify-center text-white font-bold transition-transform duration-300 hover:scale-110">
-                        {index + 1}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="md:col-span-4">
-                    <div className="bg-muted p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                      <div className="inline-block bg-firered text-white text-sm font-medium px-3 py-1 rounded mb-2">
-                        {item.year}
-                      </div>
-                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                      <p className="text-grayaccent">{item.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </StaggeredChildren>
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="py-16 md:py-24 bg-muted">
-        <div className="container">
-          <FadeIn>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">Our Credentials</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Certifications & Affiliations</h2>
-              <p className="text-grayaccent text-lg">
-                We maintain the highest industry standards through professional certifications and affiliations.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StaggeredChildren>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-                <div
-                  key={item}
-                  className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-32 transform hover:-translate-y-1"
-                >
-                  <Image
-                    src={`/placeholder.svg?height=100&width=200&text=Certification ${item}`}
-                    alt={`Certification ${item}`}
-                    width={150}
-                    height={75}
-                    className="object-contain transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
               ))}
             </StaggeredChildren>
           </div>
@@ -303,12 +365,19 @@ export default function AboutPage() {
       <section className="py-16 md:py-24 bg-firered text-white">
         <div className="container text-center">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Work with Our Expert Team?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Work with Our Expert Team?
+            </h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss your fire safety needs and discover how we can help protect your business.
+              Contact us today to discuss your fire safety needs and discover
+              how we can help protect your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <AnimatedButton asChild size="lg" className="bg-white text-firered hover:bg-white/90">
+              <AnimatedButton
+                asChild
+                size="lg"
+                className="bg-white text-firered hover:bg-white/90"
+              >
                 <Link href="/contact">Get a Free Quote</Link>
               </AnimatedButton>
               <AnimatedButton asChild variant="fireOutline" size="lg">
@@ -319,5 +388,5 @@ export default function AboutPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

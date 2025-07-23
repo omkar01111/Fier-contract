@@ -12,7 +12,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
-  const isHomePage = pathname === "/"
+  const isHomePage = pathname === "/" || pathname === "/services"
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)

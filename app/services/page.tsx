@@ -11,6 +11,13 @@ import { AnimatedCard, AnimatedCardContent } from "@/components/ui/animated-card
 import FadeIn from "@/components/animations/fade-in"
 import StaggeredChildren from "@/components/animations/staggered-children"
 import { motion, AnimatePresence } from "framer-motion"
+import serviceBg from "../../public/img/service.avif";
+import  Sprinkler  from "../../public/img/Sprinkler.webp";
+import FireExtinguisher from '../../public/img/fire extinguisher.webp'
+import FireAlarm from '../../public/img/Fire Alarm.webp'
+import Maintenance from '../../public/img/Maintenance & Inspection.webp'
+import Safety from '../../public/img/Safety Training.jpg'
+import Emergency_Lighting from '../../public/img/Emergency Lighting.jpg'
 
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState("all")
@@ -23,7 +30,7 @@ export default function ServicesPage() {
       shortDescription: "Automatic fire suppression systems designed to detect and control fires.",
       fullDescription:
         "Our fire sprinkler systems are designed to automatically detect fires, control their spread, and in many cases, extinguish them completely before the fire department arrives. We offer design, installation, inspection, and maintenance services for all types of sprinkler systems including wet pipe, dry pipe, pre-action, and deluge systems.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: Sprinkler,
       features: [
         "Custom system design for your specific facility",
         "Professional installation by certified technicians",
@@ -39,7 +46,7 @@ export default function ServicesPage() {
       shortDescription: "Supply, installation and regular inspection of fire extinguishers.",
       fullDescription:
         "We provide a comprehensive range of fire extinguishers suitable for different types of fires and environments. Our services include supply, installation, regular inspection, and maintenance to ensure your extinguishers are always ready when needed. We also offer training on proper extinguisher use for your staff.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: FireExtinguisher,
       features: [
         "Wide range of extinguisher types (ABC, CO2, Class K, etc.)",
         "Strategic placement and mounting",
@@ -55,7 +62,7 @@ export default function ServicesPage() {
       shortDescription: "Early detection systems to alert occupants and emergency services.",
       fullDescription:
         "Our fire alarm systems provide early detection and notification to help protect lives and property. We offer design, installation, testing, and maintenance of comprehensive fire alarm systems including smoke detectors, heat detectors, manual pull stations, and notification devices, all integrated with central monitoring.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: FireAlarm,
       features: [
         "Advanced detection technology",
         "Addressable and conventional systems available",
@@ -71,7 +78,7 @@ export default function ServicesPage() {
       shortDescription: "Reliable emergency lighting systems for safe evacuation.",
       fullDescription:
         "Our emergency lighting systems ensure safe evacuation during power outages or emergency situations. We provide design, installation, and maintenance of emergency lighting systems including exit signs, emergency lights, and backup power systems to meet all safety codes and regulations.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: Emergency_Lighting,
       features: [
         "LED technology for energy efficiency and longevity",
         "Battery backup systems",
@@ -87,7 +94,7 @@ export default function ServicesPage() {
       shortDescription: "Comprehensive training programs for your staff on fire safety procedures.",
       fullDescription:
         "We offer comprehensive fire safety training programs customized for your facility and staff. Our training covers fire prevention, evacuation procedures, fire extinguisher use, and emergency response protocols. All training is conducted by experienced fire safety professionals.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: Safety,
       features: [
         "Customized training programs",
         "Hands-on fire extinguisher training",
@@ -103,7 +110,7 @@ export default function ServicesPage() {
       shortDescription: "Regular maintenance and inspection services for all fire safety systems.",
       fullDescription:
         "Our maintenance and inspection services ensure your fire safety systems remain in optimal working condition. We provide scheduled inspections, testing, and maintenance for all types of fire safety equipment and systems in accordance with manufacturer specifications and regulatory requirements.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: Maintenance,
       features: [
         "Comprehensive inspection schedules",
         "Detailed documentation and reporting",
@@ -134,23 +141,38 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-muted">
-        <div className="container">
-          <FadeIn>
-            <div className="text-center max-w-3xl mx-auto">
-              <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">Our Services</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Comprehensive Fire Safety Solutions</h1>
-              <p className="text-lg text-grayaccent mb-8">
-                We provide end-to-end fire safety services to keep your business protected and compliant with all
-                regulations.
-              </p>
-              <AnimatedButton asChild size="lg" variant="fire" iconRight={<ArrowRight size={16} />}>
-                <Link href="/contact">Get a Free Consultation</Link>
-              </AnimatedButton>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={serviceBg}
+          alt="Fire Safety Services"
+          fill
+          priority
+          className="object-cover object-center w-full h-full opacity-4"
+        />
+        <div className="absolute inset-0 bg-black/50" /> {/* Optional dark overlay */}
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 container text-center max-w-3xl mx-auto">
+        <FadeIn>
+          <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">
+            Our Services
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Comprehensive Fire Safety Solutions
+          </h1>
+          <p className="text-lg mb-8 text-white/80">
+            We provide end-to-end fire safety services to keep your business protected and compliant with all
+            regulations.
+          </p>
+          <AnimatedButton asChild size="lg" variant="fire" iconRight={<ArrowRight size={16} />}>
+            <Link href="/contact">Get a Free Consultation</Link>
+          </AnimatedButton>
+        </FadeIn>
+      </div>
+    </section>
 
       {/* Services Filter */}
       <section className="py-16 md:py-24">
@@ -275,7 +297,7 @@ export default function ServicesPage() {
               </FadeIn>
 
               <FadeIn direction="left" delay={0.2} className="order-1 md:order-2">
-                <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+                <div className="relative h-64 sm:h-80 md:h-[400px] rounded-lg overflow-hidden shadow-xl">
                   <Image
                     src={service.image || "/placeholder.svg"}
                     alt={service.title}

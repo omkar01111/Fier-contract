@@ -82,37 +82,13 @@ export default function AboutPage() {
             </div>
           </FadeIn>
 
-          {/* <div className="container flex flex-col w-full justify-center items-center">
-            <FadeIn direction="right">
-              <div className="space-y-6 max-w-3xl  mx-auto mb-16">
-                <div className="space-y-4 flex justify-center items-center flex-col ]">
-                  <h3 className="text-2xl font-bold">Our Mission</h3>
-                  <p className="text-grayaccent px-5 text-center">
-                    To provide exceptional fire safety solutions that protect lives and property while delivering
-                    outstanding customer service and maintaining the highest standards of quality and professionalism.
-                  </p>
-                </div>
-                <div className="space-y-4 flex justify-center items-center flex-col ]">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3">Our Vision</h3>
-                  <p className="text-grayaccent px-5 text-center text-lg">
-                  To be the most trusted name in fire safety, recognized for our expertise, reliability, and
-                    commitment to excellence in every service we provide.
-                  </p>
-                </div>
-
-               
-              </div>
-            </FadeIn>
-</div> */}
           <div className="container  w-full">
-            <FadeIn
-              direction="left"
-              delay={0.2}
-              className=""
-            >
+            <FadeIn direction="left" delay={0.2} className="">
               <div className=" ">
-                <StaggeredChildren className="justify-center"
-  childVariants={"customChildVariants"}>
+                <StaggeredChildren
+                  className="justify-center"
+                  childVariants={"customChildVariants"}
+                >
                   {[
                     {
                       icon: <Shield className="h-8 w-8 text-firered" />,
@@ -132,12 +108,7 @@ export default function AboutPage() {
                       description:
                         "We operate with honesty and transparency in all our business dealings.",
                     },
-                    {
-                      icon: <Clock className="h-8 w-8 text-firered" />,
-                      title: "Reliability",
-                      description:
-                        "We're there when you need us, providing dependable service you can count on.",
-                    },
+                    
                   ].map((value, index) => (
                     <AnimatedCard
                       key={index}
@@ -250,8 +221,11 @@ export default function AboutPage() {
             </div>
           </FadeIn>
 
-          <div className="flex justify-evenly items-center flex-wrap w-full">
-            <StaggeredChildren childVariants={"customChildVariants"} className="w-full justify-center">
+          <div className="flex justify-evenly items-center flex-wrap w-full ">
+            <StaggeredChildren
+              childVariants={"customChildVariants"}
+              className="w-full justify-evenly items-center flex-wrap "
+            >
               {[
                 {
                   title: "Westside Commercial Complex",
@@ -326,7 +300,10 @@ export default function AboutPage() {
                   ],
                 },
               ].map((contract, index) => (
-                <AnimatedCard key={index} className="overflow-hidden h-[520px] w-[450px]">
+                <AnimatedCard
+                  key={index}
+                  className="overflow-hidden h-[520px] w-[450px]"
+                >
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={contract.image || "/placeholder.svg"}

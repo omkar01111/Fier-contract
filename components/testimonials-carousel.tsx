@@ -54,126 +54,207 @@ const testimonials = [
 export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [autoplay, setAutoplay] = useState(true)
-  const [direction, setDirection] = useState(0)
-  const visibleCount = 3
+  const [isClient, setIsClient] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
 
+  // Get responsive slide count
+  const [slidesToShow, setSlidesToShow] = useState(1)
+
+  useEffect(() => {
+    setIsClient(true)
+    
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setSlidesToShow(3)
+      } else if (window.innerWidth >= 768) {
+        setSlidesToShow(2)
+      } else {
+        setSlidesToShow(1)
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const maxIndex = Math.max(0, testimonials.length - slidesToShow)
+
   const nextSlide = () => {
-    setDirection(1)
-    setCurrentIndex((prevIndex) => (prevIndex + 1 >= testimonials.length ? 0 : prevIndex + 1))
+    setCurrentIndex((prevIndex) => 
+      prevIndex >= maxIndex ? 0 : prevIndex + 1
+    )
   }
 
   const prevSlide = () => {
-    setDirection(-1)
-    setCurrentIndex((prevIndex) => (prevIndex - 1 < 0 ? testimonials.length - 1 : prevIndex - 1))
+    setCurrentIndex((prevIndex) => 
+      prevIndex <= 0 ? maxIndex : prevIndex - 1
+    )
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(Math.min(index, maxIndex))
   }
 
   useEffect(() => {
-    let interval
-    if (autoplay) {
-      interval = setInterval(() => {
-        nextSlide()
-      }, 5000)
-    }
+    if (!autoplay || !isClient) return
+    
+    const interval = setInterval(() => {
+      nextSlide()
+    }, 5000)
+    
     return () => clearInterval(interval)
-  }, [autoplay])
+  }, [autoplay, isClient, maxIndex])
 
   const handleMouseEnter = () => setAutoplay(false)
   const handleMouseLeave = () => setAutoplay(true)
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 500 : -500,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? -500 : 500,
-      opacity: 0,
-    }),
+  if (!isClient) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {testimonials.slice(0, 3).map((testimonial, index) => (
+          <TestimonialCard key={index} testimonial={testimonial} />
+        ))}
+      </div>
+    )
   }
 
   return (
-    <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={carouselRef}>
-      <div className="overflow-hidden">
-        <div className="flex">
-          <AnimatePresence initial={false} custom={direction} mode="popLayout">
-            {testimonials.slice(currentIndex, currentIndex + visibleCount).map((testimonial, index) => (
-              <motion.div
-                key={`${currentIndex + index}`}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 },
-                }}
-                className="min-w-[33.333%] px-4 py-2"
-                style={{ width: `${100 / visibleCount}%` }}
-              >
-                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex items-center mb-4">
-                      <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4 group">
-                        <Image
-                          src={testimonial.image || "/placeholder.svg"}
-                          alt={testimonial.name}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">{testimonial.name}</h4>
-                        <p className="text-sm text-grayaccent">{testimonial.position}</p>
-                      </div>
-                    </div>
-                    <div className="flex mb-3">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          size={16}
-                          className={cn(
-                            i < testimonial.rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300",
-                            "transition-transform hover:scale-110 duration-300",
-                          )}
-                        />
-                      ))}
-                    </div>
-                    <p className="text-grayaccent flex-grow">{testimonial.content}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+    <div 
+      className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave}
+      ref={carouselRef}
+    >
+      {/* Main carousel container */}
+      <div className="overflow-hidden rounded-xl">
+        <motion.div 
+          className="flex transition-transform duration-500 ease-out"
+          animate={{ 
+            x: `-${(currentIndex * 100) / slidesToShow}%` 
+          }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 30 
+          }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className={cn(
+                "flex-shrink-0 px-3",
+                slidesToShow === 1 && "w-full",
+                slidesToShow === 2 && "w-1/2",
+                slidesToShow === 3 && "w-1/3"
+              )}
+            >
+              <TestimonialCard testimonial={testimonial} />
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white shadow-md rounded-full z-10"
-          onClick={prevSlide}
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </Button>
-      </motion.div>
+      {/* Navigation Arrows - Always visible */}
+      <Button
+        variant="outline"
+        size="icon"
+        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white/90 backdrop-blur-sm shadow-lg rounded-full z-20 border-2 hover:bg-firered hover:text-white hover:border-firered transition-all duration-300"
+        onClick={prevSlide}
+        disabled={currentIndex === 0}
+      >
+        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+      </Button>
 
-      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white shadow-md rounded-full z-10"
-          onClick={nextSlide}
-        >
-          <ChevronRight className="h-4 w-4" />
-        </Button>
-      </motion.div>
+      <Button
+        variant="outline"
+        size="icon"
+        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white/90 backdrop-blur-sm shadow-lg rounded-full z-20 border-2 hover:bg-firered hover:text-white hover:border-firered transition-all duration-300"
+        onClick={nextSlide}
+        disabled={currentIndex >= maxIndex}
+      >
+        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+      </Button>
+
+      {/* Dots indicator */}
+      <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
+        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={cn(
+              "w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300",
+              currentIndex === index
+                ? "bg-firered scale-125"
+                : "bg-gray-300 hover:bg-gray-400"
+            )}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Progress bar (mobile only) */}
+      <div className="block sm:hidden mt-4">
+        <div className="w-full bg-gray-200 rounded-full h-1">
+          <div 
+            className="bg-firered h-1 rounded-full transition-all duration-300"
+            style={{ 
+              width: `${((currentIndex + 1) / (maxIndex + 1)) * 100}%` 
+            }}
+          />
+        </div>
+      </div>
     </div>
+  )
+}
+
+function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
+  return (
+    <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-gray-200 hover:border-firered/20">
+      <CardContent className="p-4 sm:p-6 flex flex-col h-full">
+        {/* Header with avatar and info */}
+        <div className="flex items-start mb-4">
+          <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden mr-3 sm:mr-4 flex-shrink-0">
+            <Image
+              src={testimonial.image || "/placeholder.svg"}
+              alt={testimonial.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h4 className="font-semibold text-sm sm:text-base text-gray-900 truncate">
+              {testimonial.name}
+            </h4>
+            <p className="text-xs sm:text-sm text-grayaccent leading-relaxed">
+              {testimonial.position}
+            </p>
+          </div>
+        </div>
+
+        {/* Rating stars */}
+        <div className="flex mb-3 sm:mb-4">
+          {[...Array(5)].map((_, i) => (
+            <Star
+              key={i}
+              size={14}
+              className={cn(
+                i < testimonial.rating 
+                  ? "text-yellow-500 fill-yellow-500" 
+                  : "text-gray-300",
+                "sm:w-4 sm:h-4"
+              )}
+            />
+          ))}
+        </div>
+
+        {/* Testimonial content */}
+        <blockquote className="flex-grow">
+          <p className="text-grayaccent text-sm sm:text-base leading-relaxed italic">
+            "{testimonial.content}"
+          </p>
+        </blockquote>
+      </CardContent>
+    </Card>
   )
 }

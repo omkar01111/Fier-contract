@@ -14,6 +14,9 @@ import Sprinkler from '../public/img/Sprinkler.webp'
 import FireExtinguisher from '../public/img/fire extinguisher.webp'
 import FireAlarm from '../public/img/Fire Alarm.webp'
 import Maintenance from '../public/img/Maintenance & Inspection.webp'
+import Safety from '../public/img/Safety Training.jpg'
+import Emergency_Lighting from '../public/img/Emergency Lighting.jpg'
+import whyChooseUs from '../public/img/fire-brigade.webp'
 
 export default function Home() {
   return (
@@ -101,14 +104,14 @@ export default function Home() {
               {
                 title: "Emergency Lighting",
                 description: "Installation and maintenance of emergency lighting systems to guide safe evacuation.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: Emergency_Lighting,
                 link: "/services#lighting",
               },
               {
                 title: "Safety Training",
                 description:
                   "Comprehensive training programs for your staff on fire safety procedures and equipment use.",
-                image: "/placeholder.svg?height=300&width=400",
+                image: Safety,
                 link: "/services#training",
               },
               {
@@ -211,7 +214,7 @@ export default function Home() {
             <FadeIn direction="left" delay={0.2}>
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/placeholder.svg?height=1000&width=800"
+                  src={whyChooseUs}
                   alt="Fire safety professional inspecting equipment"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"

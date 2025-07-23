@@ -9,6 +9,15 @@ import FadeIn from "@/components/animations/fade-in";
 import StaggeredChildren from "@/components/animations/staggered-children";
 import AnimatedText from "@/components/animations/animated-text";
 
+import aboutbg from "../../public/img/Services.webp"
+
+import img1 from "../../public/img/img1.jpg"
+import img2 from "../../public/img/img2.jpeg"
+import img3 from "../../public/img/img3.webp"
+import img4 from "../../public/img/img4.jpg"
+import img5 from "../../public/img/img5.jpg"
+import img6 from "../../public/img/img6.jpg"
+
 export default function AboutPage() {
   return (
     <>
@@ -37,10 +46,10 @@ export default function AboutPage() {
             <FadeIn direction="left" delay={0.2}>
               <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
+                  src={aboutbg}
                   alt="FireGuard Solutions team"
                   fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover transition-transform duration-700 opacity-[0.9]  hover:scale-105"
                 />
               </div>
             </FadeIn>
@@ -108,7 +117,6 @@ export default function AboutPage() {
                       description:
                         "We operate with honesty and transparency in all our business dealings.",
                     },
-                    
                   ].map((value, index) => (
                     <AnimatedCard
                       key={index}
@@ -205,136 +213,164 @@ export default function AboutPage() {
 
       {/* Completed Contracts Showcase */}
       <section className="py-16 md:py-24">
-        <div className="container">
+        <div className="container px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
               <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">
                 Our Work
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                 Completed Contracts
               </h2>
-              <p className="text-grayaccent text-lg">
+              <p className="text-grayaccent text-base sm:text-lg">
                 A showcase of our successful fire safety projects and
                 installations
               </p>
             </div>
           </FadeIn>
 
-          <div className="flex justify-evenly items-center flex-wrap w-full ">
-            <StaggeredChildren
-              childVariants={"customChildVariants"}
-              className="w-full justify-evenly items-center flex-wrap "
-            >
-              {[
-                {
-                  title: "Westside Commercial Complex",
-                  location: "Downtown Metro Area",
-                  image: "/placeholder.svg?height=400&width=600",
-                  services: [
-                    "Complete fire sprinkler system installation across 12 floors",
-                    "Advanced fire alarm system with central monitoring",
-                    "Emergency evacuation system implementation",
-                    "Staff safety training for 200+ employees",
-                    "Annual maintenance contract",
-                  ],
-                },
-                {
-                  title: "Riverfront Hotel & Resort",
-                  location: "Coastal Tourist District",
-                  image: "/placeholder.svg?height=400&width=600",
-                  services: [
-                    "Fire safety system upgrade for 150+ guest rooms",
-                    "Kitchen fire suppression systems for 3 restaurants",
-                    "Smoke detection system with smart alerts",
-                    "Emergency lighting installation throughout property",
-                    "Custom evacuation plan development",
-                  ],
-                },
-                {
-                  title: "Northside Manufacturing Plant",
-                  location: "Industrial Zone",
-                  image: "/placeholder.svg?height=400&width=600",
-                  services: [
-                    "Industrial-grade fire suppression system installation",
-                    "Hazardous materials fire protection solutions",
-                    "24/7 monitoring system implementation",
-                    "Emergency response team training",
-                    "Regulatory compliance certification",
-                  ],
-                },
-                {
-                  title: "Eastwood Medical Center",
-                  location: "Healthcare District",
-                  image: "/placeholder.svg?height=400&width=600",
-                  services: [
-                    "Hospital-grade fire protection system installation",
-                    "Specialized systems for operating rooms and labs",
-                    "Patient evacuation planning and equipment",
-                    "Staff emergency response training",
-                    "Quarterly inspection and maintenance program",
-                  ],
-                },
-                {
-                  title: "Central School District",
-                  location: "Multiple Campus Locations",
-                  image: "/placeholder.svg?height=400&width=600",
-                  services: [
-                    "Fire alarm system upgrades for 5 school buildings",
-                    "Sprinkler system installation in gymnasiums and cafeterias",
-                    "Emergency evacuation system with PA integration",
-                    "Fire safety education program for students and staff",
-                    "Monthly inspection and maintenance services",
-                  ],
-                },
-                {
-                  title: "Southside Residential Towers",
-                  location: "Urban Residential Area",
-                  image: "/placeholder.svg?height=400&width=600",
-                  services: [
-                    "High-rise residential fire protection system installation",
-                    "Smart smoke and heat detection in 300+ units",
-                    "Lobby and common area sprinkler systems",
-                    "Resident fire safety education program",
-                    "24/7 emergency monitoring services",
-                  ],
-                },
-              ].map((contract, index) => (
-                <AnimatedCard
-                  key={index}
-                  className="overflow-hidden h-[520px] w-[450px]"
+          {/* Completed Contracts Showcase */}
+          <section className="py-16 md:py-24">
+            <div className="container px-4 sm:px-6 lg:px-8">
+              <FadeIn>
+                <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                  <Badge className="bg-firered/10 text-firered hover:bg-firered/20 mb-4">
+                    Our Work
+                  </Badge>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                    Completed Contracts
+                  </h2>
+                  <p className="text-grayaccent text-base sm:text-lg">
+                    A showcase of our successful fire safety projects and
+                    installations
+                  </p>
+                </div>
+              </FadeIn>
+
+              {/* Responsive Flexbox Container */}
+              <div className="w-full">
+                <StaggeredChildren
+                  childVariants={"customChildVariants"}
+                  className="flex flex-wrap justify-evenly gap-6 lg:gap-8"
                 >
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={contract.image || "/placeholder.svg"}
-                      alt={contract.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-1">{contract.title}</h3>
-                    <p className="text-firered font-medium text-sm mb-4">
-                      {contract.location}
-                    </p>
-                    <h4 className="font-semibold text-base mb-2">
-                      Services Provided:
-                    </h4>
-                    <ul className="space-y-2">
-                      {contract.services.map((service, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <CheckCircle className="text-firered h-5 w-5 mt-0.5 flex-shrink-0" />
-                          <span className="text-grayaccent text-sm">
-                            {service}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </AnimatedCard>
-              ))}
-            </StaggeredChildren>
-          </div>
+                  {[
+                    {
+                      title: "Westside Commercial Complex",
+                      location: "Downtown Metro Area",
+                      image: img1,
+                      services: [
+                        "Complete fire sprinkler system installation across 12 floors",
+                        "Advanced fire alarm system with central monitoring",
+                        "Emergency evacuation system implementation",
+                        "Staff safety training for 200+ employees",
+                        "Annual maintenance contract",
+                      ],
+                    },
+                    {
+                      title: "Riverfront Hotel & Resort",
+                      location: "Coastal Tourist District",
+                      image: img2,
+                      services: [
+                        "Fire safety system upgrade for 150+ guest rooms",
+                        "Kitchen fire suppression systems for 3 restaurants",
+                        "Smoke detection system with smart alerts",
+                        "Emergency lighting installation throughout property",
+                        "Custom evacuation plan development",
+                      ],
+                    },
+                    {
+                      title: "Northside Manufacturing Plant",
+                      location: "Industrial Zone",
+                      image: img3,
+                      services: [
+                        "Industrial-grade fire suppression system installation",
+                        "Hazardous materials fire protection solutions",
+                        "24/7 monitoring system implementation",
+                        "Emergency response team training",
+                        "Regulatory compliance certification",
+                      ],
+                    },
+                    {
+                      title: "Eastwood Medical Center",
+                      location: "Healthcare District",
+                      image: img4,
+                      services: [
+                        "Hospital-grade fire protection system installation",
+                        "Specialized systems for operating rooms and labs",
+                        "Patient evacuation planning and equipment",
+                        "Staff emergency response training",
+                        "Quarterly inspection and maintenance program",
+                      ],
+                    },
+                    {
+                      title: "Central School District",
+                      location: "Multiple Campus Locations",
+                      image: img5,
+                      services: [
+                        "Fire alarm system upgrades for 5 school buildings",
+                        "Sprinkler system installation in gymnasiums and cafeterias",
+                        "Emergency evacuation system with PA integration",
+                        "Fire safety education program for students and staff",
+                        "Monthly inspection and maintenance services",
+                      ],
+                    },
+                    {
+                      title: "Southside Residential Towers",
+                      location: "Urban Residential Area",
+                      image: img6,
+                      services: [
+                        "High-rise residential fire protection system installation",
+                        "Smart smoke and heat detection in 300+ units",
+                        "Lobby and common area sprinkler systems",
+                        "Resident fire safety education program",
+                        "24/7 emergency monitoring services",
+                      ],
+                    },
+                  ].map((contract, index) => (
+                    <AnimatedCard
+                      key={index}
+                      className="overflow-hidden h-full w-full max-w-sm sm:max-w-md lg:max-w-sm xl:max-w-md group flex-shrink-0"
+                    >
+                      {/* Responsive Image Container */}
+                      <div className="relative h-48 sm:h-52 lg:h-48 xl:h-52 overflow-hidden">
+                        <Image
+                          src={contract.image || "/placeholder.svg"}
+                          alt={contract.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+
+                      {/* Card Content */}
+                      <CardContent className="p-4 sm:p-6">
+                        <h3 className="text-lg sm:text-xl font-bold mb-1 line-clamp-2">
+                          {contract.title}
+                        </h3>
+                        <p className="text-firered font-medium text-sm mb-3 sm:mb-4">
+                          {contract.location}
+                        </p>
+                        <h4 className="font-semibold text-sm sm:text-base mb-2">
+                          Services Provided:
+                        </h4>
+
+                        {/* Responsive Services List */}
+                        <ul className="space-y-1.5 sm:space-y-2">
+                          {contract.services.map((service, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <CheckCircle className="text-firered h-4 w-4 sm:h-5 sm:w-5 mt-0.5 flex-shrink-0" />
+                              <span className="text-grayaccent text-xs sm:text-sm leading-relaxed">
+                                {service}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </AnimatedCard>
+                  ))}
+                </StaggeredChildren>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
 
